@@ -13,7 +13,7 @@ on:
         required: true
         default: 'Main Deploy to Hosting'
 jobs:
-  deploy:
+  deploy_294:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -21,14 +21,13 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-
       - name: Deploy to Hosting
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: ${{ secrets.FTP_DIR }}
+          server: ${{ secrets.FTP_SERVER_294 }}
+          username: ${{ secrets.FTP_USERNAME_294 }}
+          password: ${{ secrets.FTP_PASSWORD_294 }}
+          server-dir: ${{ secrets.FTP_DIR_294 }}
           local-dir: ./
           state-name: .status.json
           exclude: |
@@ -50,9 +49,9 @@ jobs:
       - name: Remove Status
         uses: StephanThierry/ftp-delete-action@v2.1
         with:
-          host: ${{ secrets.FTP_SERVER }}
-          user: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
+          host: ${{ secrets.FTP_SERVER_294 }}
+          user: ${{ secrets.FTP_USERNAME_294 }}
+          password: ${{ secrets.FTP_PASSWORD_294 }}
           remoteFiles: ".status.json"
-          workingDir: ${{ secrets.FTP_DIR }}
+          workingDir: ${{ secrets.FTP_DIR_294 }}
           ignoreSSL: 1
