@@ -19,9 +19,9 @@ jobs:
       matrix:
         node: [20]
     steps:
-      - name: Checkout Repository
+      - name: Checkout Repository 136
         uses: actions/checkout@v4
-      - name: Deploy to Hosting
+      - name: Deploy to Hosting 136
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ${{ secrets.FTP_SERVER_136 }}
@@ -46,7 +46,7 @@ jobs:
             **/node_modules/**
             **/test/**
             **/package-lock.json
-      - name: Remove Status
+      - name: Remove Status 136
         uses: StephanThierry/ftp-delete-action@v2.1
         with:
           host: ${{ secrets.FTP_SERVER_136 }}
@@ -61,9 +61,9 @@ jobs:
       matrix:
         node: [20]
     steps:
-      - name: Checkout Repository
+      - name: Checkout Repository 294
         uses: actions/checkout@v4
-      - name: Deploy to Hosting
+      - name: Deploy to Hosting 294
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ${{ secrets.FTP_SERVER_294 }}
@@ -88,7 +88,7 @@ jobs:
             **/node_modules/**
             **/test/**
             **/package-lock.json
-      - name: Remove Status
+      - name: Remove Status 294
         uses: StephanThierry/ftp-delete-action@v2.1
         with:
           host: ${{ secrets.FTP_SERVER_294 }}
@@ -96,4 +96,46 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD_294 }}
           remoteFiles: ".status.json"
           workingDir: ${{ secrets.FTP_DIR_294 }}
+          ignoreSSL: 1
+  deploy_469:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [20]
+    steps:
+      - name: Checkout Repository 469
+        uses: actions/checkout@v4
+      - name: Deploy to Hosting 469
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_SERVER_469 }}
+          username: ${{ secrets.FTP_USERNAME_469 }}
+          password: ${{ secrets.FTP_PASSWORD_469 }}
+          server-dir: ${{ secrets.FTP_DIR_469 }}
+          local-dir: ./
+          state-name: .status.json
+          exclude: |
+            **/.git/**
+            **/.github/**
+            **/src/**
+            **/.gitattributes
+            **/.gitignore
+            **/bower.json
+            **/food.sublime-project
+            **/Gruntfile.js
+            **/LICENSE
+            **/README.md
+            **/package.json
+            **/bower_components/**
+            **/node_modules/**
+            **/test/**
+            **/package-lock.json
+      - name: Remove Status 469
+        uses: StephanThierry/ftp-delete-action@v2.1
+        with:
+          host: ${{ secrets.FTP_SERVER_469 }}
+          user: ${{ secrets.FTP_USERNAME_469 }}
+          password: ${{ secrets.FTP_PASSWORD_469 }}
+          remoteFiles: ".status.json"
+          workingDir: ${{ secrets.FTP_DIR_469 }}
           ignoreSSL: 1
