@@ -1,0 +1,22 @@
+{
+  "name": "food",
+  "description": "Директория food",
+  "main": "Gruntfile.js",
+  "authors": [
+    "ProjectSoft <projectsoft2009@yandex.ru>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/ProjectSoft-STUDIONIONS/food",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "3.4.1",
+    "fancybox": "3.5.7",
+    "jquery": "3.7.1"
+  }
+}
