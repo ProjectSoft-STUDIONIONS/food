@@ -63,6 +63,20 @@ module.exports = function(grunt) {
 			 * app.js
 			 */
 			app: {
+				options: {
+					separator: "\n",
+					banner: `/**
+* <%= pkg.name %> v<%= pkg.version %>
+* 
+* <%= pkg.description %>
+* 
+* License <%= pkg.license %>
+* Author: <%= pkg.author.name %> <<%= pkg.author.email %>> <%= pkg.author.url %>
+* Compiled at: <%= grunt.template.today("hh:mm:ss yyyy-mm-dd") %>
+*
+**/
+`,
+				},
 				src: [
 					"src/js/main.js"
 				],
@@ -70,13 +84,16 @@ module.exports = function(grunt) {
 			}
 		},
 		uglify: {
-			options: {
-				sourceMap: false,
-				compress: {
-					drop_console: false
-	  			}
-			},
 			app: {
+				options: {
+					sourceMap: false,
+					compress: {
+						drop_console: false
+		  			},
+		  			output: {
+		  				ascii_only: true
+		  			}
+				},
 				files: [
 					/**
 					 * jquery.js
@@ -108,6 +125,29 @@ module.exports = function(grunt) {
 							return dst + '/' + 'fancybox.min.js';
 						}
 					},
+				]
+			},
+			main: {
+				options: {
+					sourceMap: false,
+					compress: {
+						drop_console: false
+		  			},
+					banner: `/**
+* <%= pkg.name %> v<%= pkg.version %>
+* 
+* <%= pkg.description %>
+* 
+* License <%= pkg.license %>
+* Author: <%= pkg.author.name %> <<%= pkg.author.email %>> <%= pkg.author.url %>
+* Compiled at: <%= grunt.template.today("hh:mm:ss yyyy-mm-dd") %>
+*
+**/`,
+		  			output: {
+		  				ascii_only: true
+		  			}
+				},
+				files: [
 					/**
 					 * app.js
 					 */

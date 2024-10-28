@@ -1,6 +1,6 @@
 {
 	"name": "food",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Директория food",
 	"main": "Gruntfile.js",
 	"license": "MIT",
