@@ -1,4 +1,7 @@
 !(function($){
+	const escapeRegExp = function (string) {
+		return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); // $& means the whole matched string
+	};
 	$.fancybox.defaults.transitionEffect = "circular";
 	$.fancybox.defaults.transitionDuration = 500;
 	$.fancybox.defaults.lang = "ru";
@@ -15,6 +18,18 @@
 		SHARE: "Поделиться",
 		ZOOM: "Увеличить"
 	};
+	/*
+	let items = $.makeArray($('a[href$=".xlsx"], a[href$=".docx"], a[href$=".pdf"]'));
+	$.each(items, function (i, item) {
+		let href = item.href,
+			base = window.location.origin + '/',
+			reg = new RegExp("^" + escapeRegExp(base));
+		if(reg.test(href)){
+			item.setAttribute('data-fancybox', "");
+		}
+	});
+	*/
+	//
 	$(document).on('click', 'a[href$=".xlsx"], a[href$=".docx"], a[href$=".pdf"]', function(e){
 		let base = window.location.origin + '/',
 			_this = e.currentTarget;
@@ -22,42 +37,17 @@
 			let reg = new RegExp("^" + base),
 				href = _this.href,
 				test = _this.href,
-				go = false,
 				arr = href.split('.'),
 				ext = arr.at(-1).toLowerCase(),
 				options = {};
-			
 			if(reg.test(href)){
 				e.preventDefault();
-				$(_this).data('google', go);
 				switch (ext){
 					case "xlsx":
-						go = window.location.origin + '/viewer/xlsx_viewer/?file=' + test;
-						options = {
-							src: go,
-							type: 'iframe',
-							toolbar: true,
-							smallBtn: false,
-							buttons: [
-								"close"
-							],
-							opts : {
-								afterShow : function( instance, current ) {
-									$(".fancybox-content").addClass('xlsx_viewer');
-								},
-								afterLoad : function( instance, current ) {
-									$(".fancybox-content").addClass('xlsx_viewer');
-								},
-							}
-						};
-						e.preventDefault();
-						$.fancybox.open(options);
-						return !1;
-						break;
 					case "docx":
-						go = window.location.origin + '/viewer/docx_viewer/?file=' + test;
+					case "pdf":
 						options = {
-							src: go,
+							src: window.location.origin + '/viewer/' + ext + '_viewer/?file=' + test,
 							type: 'iframe',
 							toolbar: true,
 							smallBtn: false,
@@ -66,10 +56,10 @@
 							],
 							opts : {
 								afterShow : function( instance, current ) {
-									$(".fancybox-content").addClass('docx_viewer');
+									$(".fancybox-content").addClass(ext + '_viewer');
 								},
 								afterLoad : function( instance, current ) {
-									$(".fancybox-content").addClass('docx_viewer');
+									$(".fancybox-content").addClass(ext + '_viewer');
 								},
 							}
 						};
@@ -77,30 +67,9 @@
 						$.fancybox.open(options);
 						return !1;
 						break;
-					case "pdf":
-						go = window.location.origin + '/viewer/pdf_viewer/?file=' + test;
-						options = {
-							src: go,
-							toolbar: true,
-							smallBtn: false,
-							buttons: [
-								"close"
-							],
-							opts : {
-								afterShow : function( instance, current ) {
-									$(".fancybox-content").addClass('pdf_viewer');
-								},
-								afterLoad : function( instance, current ) {
-									$(".fancybox-content").addClass('pdf_viewer');
-								},
-							}
-						};
-						e.preventDefault();
-						$.fancybox.open(options);
-						return !1;
 				}
 				return !1;
 			}
 		}
-	});
+	});//
 }(jQuery));

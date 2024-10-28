@@ -46,7 +46,9 @@ module.exports = function(grunt) {
 			 */
 			fancybox: {
 				src: [
-					"bower_components/fancybox/src/js/core.js",
+					// Строка 673. Огромная разница в получении ссылки
+					"src/js/core.js",
+					// Поддержка Rutube, pdf (viewer), xlsx (viewer), docx (viewer)
 					"src/js/media.js",
 					"bower_components/fancybox/src/js/guestures.js",
 					"bower_components/fancybox/src/js/slideshow.js",
