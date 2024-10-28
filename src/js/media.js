@@ -77,7 +77,7 @@
 		},
 		// PDF Viewer
 		pdfview: {
-			matcher: new RegExp("(^.+" + regHost + "/.+\.pdf)$", "i"),
+			matcher: new RegExp("(^.+" + regHost + "\/.+\.pdf)$", "i"),
 			params: {
 				frameBorder: 0,
 			},
@@ -86,7 +86,7 @@
 		},
 		// DOCX Viewer
 		docxview: {
-			matcher: new RegExp("(^.+" + regHost + "/.+\.docx)$", "i"),
+			matcher: new RegExp("(^.+" + regHost + "\/.+\.docx)$", "i"),
 			params: {
 				frameBorder: 0,
 			},
@@ -95,7 +95,7 @@
 		},
 		// XLSX Viewer
 		xlsxview: {
-			matcher: new RegExp("(^.+" + regHost + "/.+\.xlsx)$", "i"),
+			matcher: new RegExp("(^.+" + regHost + "\/.+\.xlsx)$", "i"),
 			params: {
 				frameBorder: 0,
 			},

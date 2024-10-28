@@ -5,5 +5,21 @@
 			"name": "Папка food (Питание) для сайта школы",
 			"path": "."
 		}
+	],
+	"settings":  {
+		"font_size": 16,
+		"tab_size": 4
+	},
+	"build_systems": [
+		{
+			"name": "Build Project",
+			"working_dir": "${project_path}",
+			"shell_cmd": "npm run build"
+		},
+		{
+			"name": "Project Install",
+			"working_dir": "${project_path}",
+			"shell_cmd": "npm i --legacy-peer-deps && bower install"
+		}
 	]
 }
