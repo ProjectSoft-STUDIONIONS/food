@@ -1,4 +1,4 @@
-name: Deploy to Hosting
+name: Upload files to school hostings
 on:
   # push:
   #   branches: [ "main" ]
@@ -9,19 +9,20 @@ on:
   workflow_dispatch:
     inputs:
       Name:
-        description: Main Deploy to Hosting
+        description: Upload files to school hostings
         required: true
-        default: 'Main Deploy to Hosting'
+        default: 'Upload files to school hostings'
 jobs:
+  # Комсомольский
   deploy_136:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         node: [20]
     steps:
-      - name: Checkout Repository 136
+      - name: Checkout Repository
         uses: actions/checkout@v4
-      - name: Deploy to Hosting 136
+      - name: Deploy to Hosting Комсомольский
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ${{ secrets.FTP_SERVER_136 }}
@@ -46,7 +47,7 @@ jobs:
             **/node_modules/**
             **/test/**
             **/package-lock.json
-      - name: Remove Status 136
+      - name: Remove Status file Комсомольский
         uses: StephanThierry/ftp-delete-action@v2.1
         with:
           host: ${{ secrets.FTP_SERVER_136 }}
@@ -55,15 +56,16 @@ jobs:
           remoteFiles: ".status.json"
           workingDir: ${{ secrets.FTP_DIR_136 }}
           ignoreSSL: 1
+  # Подбельск
   deploy_294:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         node: [20]
     steps:
-      - name: Checkout Repository 294
+      - name: Checkout Repository
         uses: actions/checkout@v4
-      - name: Deploy to Hosting 294
+      - name: Deploy to Hosting Подбельск
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ${{ secrets.FTP_SERVER_294 }}
@@ -88,7 +90,7 @@ jobs:
             **/node_modules/**
             **/test/**
             **/package-lock.json
-      - name: Remove Status 294
+      - name: Remove Status file Подбельск
         uses: StephanThierry/ftp-delete-action@v2.1
         with:
           host: ${{ secrets.FTP_SERVER_294 }}
@@ -97,15 +99,16 @@ jobs:
           remoteFiles: ".status.json"
           workingDir: ${{ secrets.FTP_DIR_294 }}
           ignoreSSL: 1
+  # Парфёновка
   deploy_469:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         node: [20]
     steps:
-      - name: Checkout Repository 469
+      - name: Checkout Repository
         uses: actions/checkout@v4
-      - name: Deploy to Hosting 469
+      - name: Deploy to Hosting Парфёновка
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ${{ secrets.FTP_SERVER_469 }}
@@ -130,7 +133,7 @@ jobs:
             **/node_modules/**
             **/test/**
             **/package-lock.json
-      - name: Remove Status 469
+      - name: Remove Status file Парфёновка
         uses: StephanThierry/ftp-delete-action@v2.1
         with:
           host: ${{ secrets.FTP_SERVER_469 }}
@@ -139,3 +142,47 @@ jobs:
           remoteFiles: ".status.json"
           workingDir: ${{ secrets.FTP_DIR_469 }}
           ignoreSSL: 1
+  # Бобровка
+  deploy_852:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [20]
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      - name: Deploy to Hosting Бобровка
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_SERVER_852 }}
+          username: ${{ secrets.FTP_USERNAME_852 }}
+          password: ${{ secrets.FTP_PASSWORD_852 }}
+          server-dir: ${{ secrets.FTP_DIR_852 }}
+          local-dir: ./
+          state-name: .status.json
+          exclude: |
+            **/.git/**
+            **/.github/**
+            **/src/**
+            **/.gitattributes
+            **/.gitignore
+            **/bower.json
+            **/food.sublime-project
+            **/Gruntfile.js
+            **/LICENSE
+            **/README.md
+            **/package.json
+            **/bower_components/**
+            **/node_modules/**
+            **/test/**
+            **/package-lock.json
+      - name: Remove Status file Бобровка
+        uses: StephanThierry/ftp-delete-action@v2.1
+        with:
+          host: ${{ secrets.FTP_SERVER_852 }}
+          user: ${{ secrets.FTP_USERNAME_852 }}
+          password: ${{ secrets.FTP_PASSWORD_852 }}
+          remoteFiles: ".status.json"
+          workingDir: ${{ secrets.FTP_DIR_852 }}
+          ignoreSSL: 1
+
