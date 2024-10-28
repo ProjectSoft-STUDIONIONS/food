@@ -3,9 +3,11 @@
 * 
 * Директория food
 * 
+* https://github.com/ProjectSoft-STUDIONIONS/food
+* 
 * License MIT
 * Author: ProjectSoft <projectsoft2009@yandex.ru> https://projectsoft.ru/
-* Compiled at: 09:10:46 2024-10-28
+* Compiled at: 28-10-2024 10:10:41 
 *
 **/
 !(function($){

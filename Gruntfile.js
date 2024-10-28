@@ -23,11 +23,15 @@ module.exports = function(grunt) {
 	require('time-grunt')(grunt);
 
 	var gc = {
-		assets: "dist/viewer/pdf_viewer"
-	}
+			assets: "dist/viewer/pdf_viewer",
+			pkg: grunt.file.readJSON('package.json')
+		},
+		url = gc.pkg.repository.url;
+	url = url.replace(".git", "").replace("git+", "");
+	gc.url = url;
 	grunt.initConfig({
 		globalConfig : gc,
-		pkg : grunt.file.readJSON('package.json'),
+		pkg : gc.pkg,
 		concat: {
 			options: {
 				separator: "\n",
@@ -70,9 +74,11 @@ module.exports = function(grunt) {
 * 
 * <%= pkg.description %>
 * 
+* <%= globalConfig.url %>
+* 
 * License <%= pkg.license %>
 * Author: <%= pkg.author.name %> <<%= pkg.author.email %>> <%= pkg.author.url %>
-* Compiled at: <%= grunt.template.today("hh:mm:ss yyyy-mm-dd") %>
+* Compiled at: <%= grunt.template.today("dd-mm-yyyy hh:mm:ss ") %>
 *
 **/
 `,
@@ -138,9 +144,11 @@ module.exports = function(grunt) {
 * 
 * <%= pkg.description %>
 * 
+* <%= globalConfig.url %>
+* 
 * License <%= pkg.license %>
 * Author: <%= pkg.author.name %> <<%= pkg.author.email %>> <%= pkg.author.url %>
-* Compiled at: <%= grunt.template.today("hh:mm:ss yyyy-mm-dd") %>
+* Compiled at: <%= grunt.template.today("dd-mm-yyyy hh:mm:ss ") %>
 *
 **/`,
 		  			output: {
