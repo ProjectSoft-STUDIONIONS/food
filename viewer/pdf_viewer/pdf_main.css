@@ -1897,7 +1897,7 @@ body {
   -webkit-user-select: none;
   -ms-user-select: none;
       user-select: none;
-  cursor: default;
+  cursor: pointer;
   box-sizing: border-box;
 }
 .toolbarButton:hover,
