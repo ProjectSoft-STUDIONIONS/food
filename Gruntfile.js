@@ -84,6 +84,7 @@ module.exports = function(grunt) {
 `,
 				},
 				src: [
+					"bower_components/js-cookie/src/js.cookie.js",
 					"src/js/main.js"
 				],
 				dest: 'viewer/app.js'

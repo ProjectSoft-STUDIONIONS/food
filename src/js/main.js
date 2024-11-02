@@ -18,6 +18,9 @@
 		SHARE: "Поделиться",
 		ZOOM: "Увеличить"
 	};
+	$.fancybox.defaults.afterClose = function(instance, current){
+		Cookies.remove('pdfjs.history', { path: '' });
+	};
 	let items = $.makeArray($('a[href$=".xlsx"], a[href$=".docx"], a[href$=".pdf"]'));
 	$.each(items, function (i, item) {
 		let href = item.href,

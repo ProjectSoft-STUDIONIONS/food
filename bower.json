@@ -17,6 +17,7 @@
   "dependencies": {
     "bootstrap": "3.4.1",
     "fancybox": "3.5.7",
+    "js-cookie": "^2.2.1",
     "jquery": "3.7.1"
   }
 }
