@@ -1455,7 +1455,7 @@ body {
 .findbar,
 .secondaryToolbar,
 .editorParamsToolbar {
-  top: 32px;
+  top: 70px;
   position: absolute;
   z-index: 30000;
   height: auto;

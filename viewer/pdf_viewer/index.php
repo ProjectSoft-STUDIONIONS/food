@@ -95,9 +95,9 @@
 					</div>
 				</div>
 				<!-- secondaryToolbar-->
-				<div class="secondaryToolbar doorHangerRight" id="secondaryToolbar">
+				<div class="secondaryToolbar hidden doorHangerRight" id="secondaryToolbar">
 					<div id="secondaryToolbarButtonContainer">
-						<button class="secondaryToolbarButton visibleLargeView hidden" id="secondaryOpenFile" title="Open File" tabindex="51" data-l10n-id="open_file"><span data-l10n-id="open_file_label">Open</span></button>
+						<button class="secondaryToolbarButton visibleLargeView" id="secondaryOpenFile" title="Open File" tabindex="51" data-l10n-id="open_file"><span data-l10n-id="open_file_label">Open</span></button>
 						<button class="secondaryToolbarButton visibleMediumView" id="secondaryPrint" title="Print" tabindex="52" data-l10n-id="print"><span data-l10n-id="print_label">Print</span></button>
 						<button class="secondaryToolbarButton visibleMediumView hidden" id="secondaryDownload" title="Save" tabindex="53" data-l10n-id="save"><span data-l10n-id="save_label">Save</span></button>
 
