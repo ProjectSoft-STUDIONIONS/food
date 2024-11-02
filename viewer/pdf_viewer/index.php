@@ -95,38 +95,52 @@
 					</div>
 				</div>
 				<!-- secondaryToolbar-->
-				<div class="secondaryToolbar hidden doorHangerRight" id="secondaryToolbar">
+				<div class="secondaryToolbar doorHangerRight" id="secondaryToolbar">
 					<div id="secondaryToolbarButtonContainer">
-						<button class="secondaryToolbarButton visibleLargeView" id="secondaryOpenFile" title="Open File" tabindex="51" data-l10n-id="open_file"><span data-l10n-id="open_file_label">Open</span></button>
+						<button class="secondaryToolbarButton visibleLargeView hidden" id="secondaryOpenFile" title="Open File" tabindex="51" data-l10n-id="open_file"><span data-l10n-id="open_file_label">Open</span></button>
 						<button class="secondaryToolbarButton visibleMediumView" id="secondaryPrint" title="Print" tabindex="52" data-l10n-id="print"><span data-l10n-id="print_label">Print</span></button>
-						<button class="secondaryToolbarButton visibleMediumView" id="secondaryDownload" title="Save" tabindex="53" data-l10n-id="save"><span data-l10n-id="save_label">Save</span></button>
-						<div class="horizontalToolbarSeparator visibleLargeView"></div>
-						<button class="secondaryToolbarButton" id="presentationMode" title="Switch to Presentation Mode" tabindex="54" data-l10n-id="presentation_mode"><span data-l10n-id="presentation_mode_label">Presentation Mode</span></button><a class="secondaryToolbarButton" id="viewBookmark" href="#" title="Current view (copy or open in new window)" tabindex="55" data-l10n-id="bookmark"><span data-l10n-id="bookmark_label">Current View</span></a>
-						<div class="horizontalToolbarSeparator" id="viewBookmarkSeparator"></div>
-						<button class="secondaryToolbarButton" id="firstPage" title="Go to First Page" tabindex="56" data-l10n-id="first_page"><span data-l10n-id="first_page_label">Go to First Page</span></button>
-						<button class="secondaryToolbarButton" id="lastPage" title="Go to Last Page" tabindex="57" data-l10n-id="last_page"><span data-l10n-id="last_page_label">Go to Last Page</span></button>
+						<button class="secondaryToolbarButton visibleMediumView hidden" id="secondaryDownload" title="Save" tabindex="53" data-l10n-id="save"><span data-l10n-id="save_label">Save</span></button>
+
+						<div class="horizontalToolbarSeparator visibleLargeView hidden"></div>
+
+						<button class="secondaryToolbarButton hidden" id="presentationMode" title="Switch to Presentation Mode" tabindex="54" data-l10n-id="presentation_mode"><span data-l10n-id="presentation_mode_label">Presentation Mode</span></button><a class="secondaryToolbarButton" id="viewBookmark" href="#" title="Current view (copy or open in new window)" tabindex="55" data-l10n-id="bookmark"><span data-l10n-id="bookmark_label">Current View</span></a>
+
+						<div class="horizontalToolbarSeparator hidden" id="viewBookmarkSeparator"></div>
+
+						<button class="secondaryToolbarButton hidden" id="firstPage" title="Go to First Page" tabindex="56" data-l10n-id="first_page"><span data-l10n-id="first_page_label">Go to First Page</span></button>
+						<button class="secondaryToolbarButton hidden" id="lastPage" title="Go to Last Page" tabindex="57" data-l10n-id="last_page"><span data-l10n-id="last_page_label">Go to Last Page</span></button>
+
 						<div class="horizontalToolbarSeparator"></div>
+
 						<button class="secondaryToolbarButton" id="pageRotateCw" title="Rotate Clockwise" tabindex="58" data-l10n-id="page_rotate_cw"><span data-l10n-id="page_rotate_cw_label">Rotate Clockwise</span></button>
 						<button class="secondaryToolbarButton" id="pageRotateCcw" title="Rotate Counterclockwise" tabindex="59" data-l10n-id="page_rotate_ccw"><span data-l10n-id="page_rotate_ccw_label">Rotate Counterclockwise</span></button>
-						<div class="horizontalToolbarSeparator"></div>
-						<div id="cursorToolButtons" role="radiogroup">
+
+						<div class="horizontalToolbarSeparator hidden"></div>
+
+						<div id="cursorToolButtons" role="radiogroup" class="hidden">
 							<button class="secondaryToolbarButton toggled" id="cursorSelectTool" title="Enable Text Selection Tool" tabindex="60" data-l10n-id="cursor_text_select_tool" role="radio" aria-checked="true"><span data-l10n-id="cursor_text_select_tool_label">Text Selection Tool</span></button>
 							<button class="secondaryToolbarButton" id="cursorHandTool" title="Enable Hand Tool" tabindex="61" data-l10n-id="cursor_hand_tool" role="radio" aria-checked="false"><span data-l10n-id="cursor_hand_tool_label">Hand Tool</span></button>
 						</div>
-						<div class="horizontalToolbarSeparator"></div>
+
+						<div class="horizontalToolbarSeparator hidden"></div>
+
 						<div id="scrollModeButtons" role="radiogroup">
-							<button class="secondaryToolbarButton" id="scrollPage" title="Use Page Scrolling" tabindex="62" data-l10n-id="scroll_page" role="radio" aria-checked="false"><span data-l10n-id="scroll_page_label">Page Scrolling</span></button>
-							<button class="secondaryToolbarButton toggled" id="scrollVertical" title="Use Vertical Scrolling" tabindex="63" data-l10n-id="scroll_vertical" role="radio" aria-checked="true"><span data-l10n-id="scroll_vertical_label">Vertical Scrolling</span></button>
-							<button class="secondaryToolbarButton" id="scrollHorizontal" title="Use Horizontal Scrolling" tabindex="64" data-l10n-id="scroll_horizontal" role="radio" aria-checked="false"><span data-l10n-id="scroll_horizontal_label">Horizontal Scrolling</span></button>
-							<button class="secondaryToolbarButton" id="scrollWrapped" title="Use Wrapped Scrolling" tabindex="65" data-l10n-id="scroll_wrapped" role="radio" aria-checked="false"><span data-l10n-id="scroll_wrapped_label">Wrapped Scrolling</span></button>
+							<button class="secondaryToolbarButton hidden" id="scrollPage" title="Use Page Scrolling" tabindex="62" data-l10n-id="scroll_page" role="radio" aria-checked="false"><span data-l10n-id="scroll_page_label">Page Scrolling</span></button>
+							<button class="secondaryToolbarButton toggled hidden" id="scrollVertical" title="Use Vertical Scrolling" tabindex="63" data-l10n-id="scroll_vertical" role="radio" aria-checked="true"><span data-l10n-id="scroll_vertical_label">Vertical Scrolling</span></button>
+							<button class="secondaryToolbarButton hidden" id="scrollHorizontal" title="Use Horizontal Scrolling" tabindex="64" data-l10n-id="scroll_horizontal" role="radio" aria-checked="false"><span data-l10n-id="scroll_horizontal_label">Horizontal Scrolling</span></button>
+							<button class="secondaryToolbarButton hidden" id="scrollWrapped" title="Use Wrapped Scrolling" tabindex="65" data-l10n-id="scroll_wrapped" role="radio" aria-checked="false"><span data-l10n-id="scroll_wrapped_label">Wrapped Scrolling</span></button>
 						</div>
-						<div class="horizontalToolbarSeparator"></div>
+
+						<div class="horizontalToolbarSeparator hidden"></div>
+
 						<div id="spreadModeButtons" role="radiogroup">
-							<button class="secondaryToolbarButton toggled" id="spreadNone" title="Do not join page spreads" tabindex="66" data-l10n-id="spread_none" role="radio" aria-checked="true"><span data-l10n-id="spread_none_label">No Spreads</span></button>
-							<button class="secondaryToolbarButton" id="spreadOdd" title="Join page spreads starting with odd-numbered pages" tabindex="67" data-l10n-id="spread_odd" role="radio" aria-checked="false"><span data-l10n-id="spread_odd_label">Odd Spreads</span></button>
-							<button class="secondaryToolbarButton" id="spreadEven" title="Join page spreads starting with even-numbered pages" tabindex="68" data-l10n-id="spread_even" role="radio" aria-checked="false"><span data-l10n-id="spread_even_label">Even Spreads</span></button>
+							<button class="secondaryToolbarButton toggled hidden" id="spreadNone" title="Do not join page spreads" tabindex="66" data-l10n-id="spread_none" role="radio" aria-checked="true"><span data-l10n-id="spread_none_label">No Spreads</span></button>
+							<button class="secondaryToolbarButton hidden" id="spreadOdd" title="Join page spreads starting with odd-numbered pages" tabindex="67" data-l10n-id="spread_odd" role="radio" aria-checked="false"><span data-l10n-id="spread_odd_label">Odd Spreads</span></button>
+							<button class="secondaryToolbarButton hidden" id="spreadEven" title="Join page spreads starting with even-numbered pages" tabindex="68" data-l10n-id="spread_even" role="radio" aria-checked="false"><span data-l10n-id="spread_even_label">Even Spreads</span></button>
 						</div>
+
 						<div class="horizontalToolbarSeparator"></div>
+
 						<button class="secondaryToolbarButton" id="documentProperties" title="Document Properties…" tabindex="69" data-l10n-id="document_properties" aria-controls="documentPropertiesDialog"><span data-l10n-id="document_properties_label">Document Properties&mldr;</span></button>
 					</div>
 				</div>
@@ -153,15 +167,19 @@
 							</div>
 							<div id="toolbarViewerRight">
 								<button class="toolbarButton hidden hiddenLargeView" id="openFile" title="Open File" tabindex="31" data-l10n-id="open_file"><span data-l10n-id="open_file_label">Open</span></button>
-								<button class="toolbarButton hidden hiddenMediumView" id="print" title="Print" tabindex="32" data-l10n-id="print"><span data-l10n-id="print_label">Print</span></button>
+								<button class="toolbarButton hiddenMediumView" id="print" title="Print" tabindex="32" data-l10n-id="print"><span data-l10n-id="print_label">Print</span></button>
 								<button class="toolbarButton hidden hiddenMediumView" id="download" title="Save" tabindex="33" data-l10n-id="save"><span data-l10n-id="save_label">Save</span></button>
+
 								<div class="verticalToolbarSeparator hidden hiddenMediumView"></div>
+
 								<div class="hidden splitToolbarButton toggled" id="editorModeButtons" role="radiogroup">
 									<button class="toolbarButton" id="editorFreeText" disabled="disabled" title="Text" role="radio" aria-checked="false" tabindex="34" data-l10n-id="editor_free_text2"><span data-l10n-id="editor_free_text2_label">Text</span></button>
 									<button class="toolbarButton" id="editorInk" disabled="disabled" title="Draw" role="radio" aria-checked="false" tabindex="35" data-l10n-id="editor_ink2"><span data-l10n-id="editor_ink2_label">Draw</span></button>
 								</div>
-								<div class="hidden verticalToolbarSeparator" id="editorModeSeparator"></div>
-								<button class="hidden toolbarButton" id="secondaryToolbarToggle" title="Tools" tabindex="48" data-l10n-id="tools" aria-expanded="false" aria-controls="secondaryToolbar"><span data-l10n-id="tools_label">Tools</span></button>
+
+								<div class="verticalToolbarSeparator" id="editorModeSeparator"></div>
+
+								<button class="toolbarButton" id="secondaryToolbarToggle" title="Tools" tabindex="48" data-l10n-id="tools" aria-expanded="false" aria-controls="secondaryToolbar"><span data-l10n-id="tools_label">Tools</span></button>
 							</div>
 							<div id="toolbarViewerMiddle">
 								<div class="splitToolbarButton">
