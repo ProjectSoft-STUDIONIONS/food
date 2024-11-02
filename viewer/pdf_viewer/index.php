@@ -103,14 +103,15 @@
 
 						<div class="horizontalToolbarSeparator visibleLargeView hidden"></div>
 
-						<button class="secondaryToolbarButton hidden" id="presentationMode" title="Switch to Presentation Mode" tabindex="54" data-l10n-id="presentation_mode"><span data-l10n-id="presentation_mode_label">Presentation Mode</span></button><a class="secondaryToolbarButton" id="viewBookmark" href="#" title="Current view (copy or open in new window)" tabindex="55" data-l10n-id="bookmark"><span data-l10n-id="bookmark_label">Current View</span></a>
+						<button class="secondaryToolbarButton hidden" id="presentationMode" title="Switch to Presentation Mode" tabindex="54" data-l10n-id="presentation_mode"><span data-l10n-id="presentation_mode_label">Presentation Mode</span></button>
+						<a class="secondaryToolbarButton hidden" id="viewBookmark" href="#" title="Current view (copy or open in new window)" tabindex="55" data-l10n-id="bookmark"><span data-l10n-id="bookmark_label">Current View</span></a>
 
 						<div class="horizontalToolbarSeparator hidden" id="viewBookmarkSeparator"></div>
 
 						<button class="secondaryToolbarButton hidden" id="firstPage" title="Go to First Page" tabindex="56" data-l10n-id="first_page"><span data-l10n-id="first_page_label">Go to First Page</span></button>
 						<button class="secondaryToolbarButton hidden" id="lastPage" title="Go to Last Page" tabindex="57" data-l10n-id="last_page"><span data-l10n-id="last_page_label">Go to Last Page</span></button>
 
-						<div class="horizontalToolbarSeparator"></div>
+						<div class="horizontalToolbarSeparator hidden"></div>
 
 						<button class="secondaryToolbarButton" id="pageRotateCw" title="Rotate Clockwise" tabindex="58" data-l10n-id="page_rotate_cw"><span data-l10n-id="page_rotate_cw_label">Rotate Clockwise</span></button>
 						<button class="secondaryToolbarButton" id="pageRotateCcw" title="Rotate Counterclockwise" tabindex="59" data-l10n-id="page_rotate_ccw"><span data-l10n-id="page_rotate_ccw_label">Rotate Counterclockwise</span></button>
