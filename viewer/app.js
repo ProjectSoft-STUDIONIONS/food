@@ -7,7 +7,7 @@
 * 
 * License MIT
 * Author: ProjectSoft <projectsoft2009@yandex.ru> https://projectsoft.ru/
-* Compiled at: 06-11-2024 01:11:54 
+* Compiled at: 06-11-2024 02:11:57 
 *
 **/
 /*!
@@ -205,10 +205,10 @@
 			ext = arr.at(-1).toLowerCase(),
 			reg = new RegExp("^" + escapeRegExp(base));
 		if(reg.test(href) && $.trim(item.textContent)){
-			console.log(ext);
 			item.setAttribute('data-fancybox', ext);
 			item.setAttribute('data-caption', "Меню питания на " + $.trim(item.textContent));
 			item.setAttribute('data-src', base + 'viewer/' + ext + '_viewer/?file=' + href);
 		}
+		item.setAttribute('target', "_blank");
 	});
 }(jQuery));

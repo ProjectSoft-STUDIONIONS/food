@@ -788,6 +788,10 @@ body.compensate-for-scrollbar {
   height: 100% !important;
 }
 
+.fancybox-container .fancybox-content {
+  height: 100% !important;
+}
+
 @media all and (max-height: 576px) {
   .fancybox-slide {
     padding-left: 6px;

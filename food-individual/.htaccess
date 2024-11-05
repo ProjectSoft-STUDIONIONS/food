@@ -38,6 +38,8 @@ Options +Indexes +ExecCGI +Includes
 	AddIcon /icons-full/ppt.png .ppt .pptx
 	AddIcon /icons-full/psd.png .psd
 	AddIcon /icons-full/svg.png .svg
+
+	AddDescription "Portable Document Format" .pdf
 	
 	AddIcon /icons-full/txt.png .txt
 	AddAlt "Текстовый файл" .txt

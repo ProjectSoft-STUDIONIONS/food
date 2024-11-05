@@ -4,172 +4,171 @@
 (function ($) {
 	'use strict';
 
-	// Object containing properties for each media type
-	var escapeRegExp = function (string) {
-		return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); // $& means the whole matched string
-	};
-	var UrlValid = function(string) {
-		let tmp = false;
-		try {
-			tmp = new URL(string);
-			return tmp.href;
-		} catch (err) {
-			try {
-				tmp = new URL(window.location.protocol + "//" + window.location.hostname + "/" + string);
-				return tmp.href;
-			}catch(er){
-				return false;
+	const escapeRegExp = function (string) {
+			return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); // $& means the whole matched string
+		},
+		// Formats matching url to final form
+		format = function (url, rez, params) {
+			if (!url) {
+				return;
 			}
-		}
-	};
-	const regHost = escapeRegExp(window.location.hostname);
+
+			params = params || '';
+
+			if ($.type(params) === 'object') {
+				params = $.param(params, true);
+			}
+
+			$.each(rez, function (key, value) {
+				url = url.replace('$' + key, value || '');
+			});
+
+			if (params.length) {
+				url += (url.indexOf('?') > 0 ? '&' : '?') + params;
+			}
+
+			return url;
+		},
+		UrlValid = function(string) {
+			let tmp = false;
+			try {
+				tmp = new URL(string);
+				return tmp.href;
+			} catch (err) {
+				try {
+					tmp = new URL(window.location.protocol + "//" + window.location.hostname + "/" + string);
+					return tmp.href;
+				}catch(er){
+					return false;
+				}
+			}
+		},
+		regHost = escapeRegExp(window.location.hostname);
+	// Object containing properties for each media type
 	var defaults = {
-		// YouTube
-		youtube: {
-			matcher:
-				/(youtube\.com|youtu\.be|youtube\-nocookie\.com)\/(watch\?(.*&)?v=|v\/|u\/|embed\/?)?(videoseries\?list=(.*)|[\w-]{11}|\?listType=(.*)&list=(.*))(.*)/i,
-			params: {
-				autoplay: 0,
-				autohide: 1,
-				fs: 1,
-				rel: 0,
-				hd: 1,
-				wmode: 'transparent',
-				enablejsapi: 1,
-				html5: 1,
+			// YouTube
+			youtube: {
+				matcher:
+					/(youtube\.com|youtu\.be|youtube\-nocookie\.com)\/(watch\?(.*&)?v=|v\/|u\/|embed\/?)?(videoseries\?list=(.*)|[\w-]{11}|\?listType=(.*)&list=(.*))(.*)/i,
+				params: {
+					autoplay: 0,
+					autohide: 1,
+					fs: 1,
+					rel: 0,
+					hd: 1,
+					wmode: 'transparent',
+					enablejsapi: 1,
+					html5: 1,
+				},
+				paramPlace: 8,
+				type: 'iframe',
+				url: 'https://www.youtube-nocookie.com/embed/$4',
+				thumb: 'https://img.youtube.com/vi/$4/hqdefault.jpg',
 			},
-			paramPlace: 8,
-			type: 'iframe',
-			url: 'https://www.youtube-nocookie.com/embed/$4',
-			thumb: 'https://img.youtube.com/vi/$4/hqdefault.jpg',
-		},
-		// Vimeo
-		vimeo: {
-			matcher: /^.+vimeo.com\/(.*\/)?([\d]+)(.*)?/,
-			params: {
-				autoplay: 1,
-				hd: 1,
-				show_title: 1,
-				show_byline: 1,
-				show_portrait: 0,
-				fullscreen: 1,
+			// Vimeo
+			vimeo: {
+				matcher: /^.+vimeo.com\/(.*\/)?([\d]+)(.*)?/,
+				params: {
+					autoplay: 1,
+					hd: 1,
+					show_title: 1,
+					show_byline: 1,
+					show_portrait: 0,
+					fullscreen: 1,
+				},
+				paramPlace: 3,
+				type: 'iframe',
+				url: 'https://player.vimeo.com/video/$2',
 			},
-			paramPlace: 3,
-			type: 'iframe',
-			url: 'https://player.vimeo.com/video/$2',
-		},
-		// Rutube
-		rutube: {
-			matcher: /^.+rutube.ru\/(?:video|shorts)\/(\w+)\/?/,
-			params: {
-				frameBorder: 0,
+			// Rutube
+			rutube: {
+				matcher: /^.+rutube.ru\/(?:video|shorts)\/(\w+)\/?/,
+				params: {
+					frameBorder: 0,
+				},
+				paramPlace: 1,
+				type: 'iframe',
+				url: 'https://rutube.ru/play/embed/$1',
+				// thumb: 'Надо как-то вставить'
 			},
-			paramPlace: 1,
-			type: 'iframe',
-			url: 'https://rutube.ru/play/embed/$1',
-			// thumb: 'Надо как-то вставить'
-		},
-		// Instagram
-		instagram: {
-			matcher: /(instagr\.am|instagram\.com)\/p\/([a-zA-Z0-9_\-]+)\/?/i,
-			type: 'image',
-			url: 'https://$1/p/$2/media/?size=l',
-		},
-		// PDF Viewer
-		pdfview: {
-			matcher: new RegExp("(^.+" + regHost + "\/.+\.pdf)$", "im"),
-			type: 'iframe',
-			url: window.location.origin + "/viewer/pdf_viewer/?file=$1"
-		},
-		// DOCX Viewer
-		docxview: {
-			matcher: new RegExp("(^.+" + regHost + "\/.+\.docx)$", "i"),
-			type: 'iframe',
-			url: window.location.origin + "/viewer/docx_viewer/?file=$1"
-		},
-		// XLSX Viewer
-		xlsxview: {
-			matcher: new RegExp("(^.+" + regHost + "\/.+\.xlsx)$", "i"),
-			type: 'iframe',
-			url: window.location.origin + "/viewer/xlsx_viewer/?file=$1"
-		},
-		/*
-		Пока уберём
-		pdf: {
-			matcher: /(.+\.(?:pdf))((\?|#).*)?$/i,
-			type: 'iframe',
-			url: "$1$2"
-		},
-		*/
-		// Examples:
-		// http://maps.google.com/?ll=48.857995,2.294297&spn=0.007666,0.021136&t=m&z=16
-		// https://www.google.com/maps/@37.7852006,-122.4146355,14.65z
-		// https://www.google.com/maps/@52.2111123,2.9237542,6.61z?hl=en
-		// https://www.google.com/maps/place/Googleplex/@37.4220041,-122.0833494,17z/data=!4m5!3m4!1s0x0:0x6c296c66619367e0!8m2!3d37.4219998!4d-122.0840572
-		gmap_place: {
-			matcher:
-				/(maps\.)?google\.([a-z]{2,3}(\.[a-z]{2})?)\/(((maps\/(place\/(.*)\/)?\@(.*),(\d+.?\d+?)z))|(\?ll=))(.*)?/i,
-			type: 'iframe',
-			url: function (rez) {
-				return (
-					'https://maps.google.' +
-					rez[2] +
-					'/?ll=' +
-					(rez[9]
-						? rez[9] +
-							'&z=' +
-							Math.floor(rez[10]) +
-							(rez[12] ? rez[12].replace(/^\//, '&') : '')
-						: rez[12] + ''
-					).replace(/\?/, '&') +
-					'&output=' +
-					(rez[12] && rez[12].indexOf('layer=c') > 0 ? 'svembed' : 'embed')
-				);
+			// Instagram
+			instagram: {
+				matcher: /(instagr\.am|instagram\.com)\/p\/([a-zA-Z0-9_\-]+)\/?/i,
+				type: 'image',
+				url: 'https://$1/p/$2/media/?size=l',
 			},
-		},
-
-		// Examples:
-		// https://www.google.com/maps/search/Empire+State+Building/
-		// https://www.google.com/maps/search/?api=1&query=centurylink+field
-		// https://www.google.com/maps/search/?api=1&query=47.5951518,-122.3316393
-		gmap_search: {
-			matcher:
-				/(maps\.)?google\.([a-z]{2,3}(\.[a-z]{2})?)\/(maps\/search\/)(.*)/i,
-			type: 'iframe',
-			url: function (rez) {
-				return (
-					'https://maps.google.' +
-					rez[2] +
-					'/maps?q=' +
-					rez[5].replace('query=', 'q=').replace('api=1', '') +
-					'&output=embed'
-				);
+			// PDF Viewer
+			pdfview: {
+				matcher: new RegExp("(^.+" + regHost + "\/.+\.pdf)$", "im"),
+				type: 'iframe',
+				url: window.location.origin + "/viewer/pdf_viewer/?file=$1"
 			},
-		},
-	};
+			// DOCX Viewer
+			docxview: {
+				matcher: new RegExp("(^.+" + regHost + "\/.+\.docx)$", "i"),
+				type: 'iframe',
+				url: window.location.origin + "/viewer/docx_viewer/?file=$1"
+			},
+			// XLSX Viewer
+			xlsxview: {
+				matcher: new RegExp("(^.+" + regHost + "\/.+\.xlsx)$", "i"),
+				type: 'iframe',
+				url: window.location.origin + "/viewer/xlsx_viewer/?file=$1"
+			},
+			/*
+			Пока уберём
+			pdf: {
+				matcher: /(.+\.(?:pdf))((\?|#).*)?$/i,
+				type: 'iframe',
+				url: "$1$2"
+			},
+			*/
+			// Examples:
+			// http://maps.google.com/?ll=48.857995,2.294297&spn=0.007666,0.021136&t=m&z=16
+			// https://www.google.com/maps/@37.7852006,-122.4146355,14.65z
+			// https://www.google.com/maps/@52.2111123,2.9237542,6.61z?hl=en
+			// https://www.google.com/maps/place/Googleplex/@37.4220041,-122.0833494,17z/data=!4m5!3m4!1s0x0:0x6c296c66619367e0!8m2!3d37.4219998!4d-122.0840572
+			gmap_place: {
+				matcher:
+					/(maps\.)?google\.([a-z]{2,3}(\.[a-z]{2})?)\/(((maps\/(place\/(.*)\/)?\@(.*),(\d+.?\d+?)z))|(\?ll=))(.*)?/i,
+				type: 'iframe',
+				url: function (rez) {
+					return (
+						'https://maps.google.' +
+						rez[2] +
+						'/?ll=' +
+						(rez[9]
+							? rez[9] +
+								'&z=' +
+								Math.floor(rez[10]) +
+								(rez[12] ? rez[12].replace(/^\//, '&') : '')
+							: rez[12] + ''
+						).replace(/\?/, '&') +
+						'&output=' +
+						(rez[12] && rez[12].indexOf('layer=c') > 0 ? 'svembed' : 'embed')
+					);
+				},
+			},
 
-	// Formats matching url to final form
-	var format = function (url, rez, params) {
-		if (!url) {
-			return;
-		}
-
-		params = params || '';
-
-		if ($.type(params) === 'object') {
-			params = $.param(params, true);
-		}
-
-		$.each(rez, function (key, value) {
-			url = url.replace('$' + key, value || '');
-		});
-
-		if (params.length) {
-			url += (url.indexOf('?') > 0 ? '&' : '?') + params;
-		}
-
-		return url;
-	};
+			// Examples:
+			// https://www.google.com/maps/search/Empire+State+Building/
+			// https://www.google.com/maps/search/?api=1&query=centurylink+field
+			// https://www.google.com/maps/search/?api=1&query=47.5951518,-122.3316393
+			gmap_search: {
+				matcher:
+					/(maps\.)?google\.([a-z]{2,3}(\.[a-z]{2})?)\/(maps\/search\/)(.*)/i,
+				type: 'iframe',
+				url: function (rez) {
+					return (
+						'https://maps.google.' +
+						rez[2] +
+						'/maps?q=' +
+						rez[5].replace('query=', 'q=').replace('api=1', '') +
+						'&output=embed'
+					);
+				},
+			},
+		};
 
 	$(document).on('objectNeedsType.fb', function (e, instance, item) {
 		var url = UrlValid(item.src),//item.src || false,
