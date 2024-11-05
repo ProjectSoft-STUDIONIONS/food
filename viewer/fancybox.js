@@ -3503,7 +3503,7 @@
 		},
 		// PDF Viewer
 		pdfview: {
-			matcher: new RegExp("(^.+" + regHost + "\/.+\.pdf)$", "i"),
+			matcher: new RegExp("(^.+" + regHost + "\/.+\.pdf)$", "im"),
 			type: 'iframe',
 			url: window.location.origin + "/viewer/pdf_viewer/?file=$1"
 		},
@@ -3625,7 +3625,7 @@
 			type = providerOpts.type;
 			provider = providerName;
 			paramObj = {};
-
+			console.log(providerName);
 			if (providerOpts.paramPlace && rez[providerOpts.paramPlace]) {
 				urlParams = rez[providerOpts.paramPlace];
 
