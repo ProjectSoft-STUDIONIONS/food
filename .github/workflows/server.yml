@@ -185,4 +185,47 @@ jobs:
           remoteFiles: ".status.json"
           workingDir: ${{ secrets.FTP_DIR_852 }}
           ignoreSSL: 1
+  # Бобровка СП ДС
+  deploy_8817:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [20]
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      - name: Deploy to Hosting Бобровка
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_SERVER_8817 }}
+          username: ${{ secrets.FTP_USERNAME_8817 }}
+          password: ${{ secrets.FTP_PASSWORD_8817 }}
+          server-dir: ${{ secrets.FTP_DIR_8817 }}
+          local-dir: ./
+          state-name: .status.json
+          exclude: |
+            **/.git/**
+            **/.github/**
+            **/src/**
+            **/.gitattributes
+            **/.gitignore
+            **/bower.json
+            **/food.sublime-project
+            **/Gruntfile.js
+            **/LICENSE
+            **/README.md
+            **/package.json
+            **/bower_components/**
+            **/node_modules/**
+            **/test/**
+            **/package-lock.json
+      - name: Remove Status file Бобровка СП ДС
+        uses: StephanThierry/ftp-delete-action@v2.1
+        with:
+          host: ${{ secrets.FTP_SERVER_8817 }}
+          user: ${{ secrets.FTP_USERNAME_8817 }}
+          password: ${{ secrets.FTP_PASSWORD_8817 }}
+          remoteFiles: ".status.json"
+          workingDir: ${{ secrets.FTP_DIR_8817 }}
+          ignoreSSL: 1
 
