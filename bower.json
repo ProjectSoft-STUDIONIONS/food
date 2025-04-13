@@ -8,7 +8,6 @@
   "license": "MIT",
   "homepage": "https://github.com/ProjectSoft-STUDIONIONS/food",
   "ignore": [
-    "**/.*",
     "node_modules",
     "bower_components",
     "test",
