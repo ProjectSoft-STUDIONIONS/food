@@ -19,7 +19,9 @@
 		ZOOM: "Увеличить"
 	};
 	$.fancybox.defaults.afterClose = function(instance, current){
+		// Удаляем историю pdf. Очень неудобная штука
 		Cookies.remove('pdfjs.history', { path: '' });
+		window.localStorage.removeItem('pdfjs.history');
 	};
 	let items = $.makeArray($('a[href$=".xlsx"], a[href$=".docx"], a[href$=".pdf"]'));
 	$.each(items, function (i, item) {

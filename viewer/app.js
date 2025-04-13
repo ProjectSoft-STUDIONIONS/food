@@ -7,7 +7,7 @@
 * 
 * License MIT
 * Author: ProjectSoft <projectsoft2009@yandex.ru> https://projectsoft.ru/
-* Compiled at: 13-04-2025 12:04:13 
+* Compiled at: 13-04-2025 12:04:12 
 *
 **/
 /*!
@@ -195,7 +195,9 @@
 		ZOOM: "Увеличить"
 	};
 	$.fancybox.defaults.afterClose = function(instance, current){
+		// Удаляем историю pdf. Очень неудобная штука
 		Cookies.remove('pdfjs.history', { path: '' });
+		window.localStorage.removeItem('pdfjs.history');
 	};
 	let items = $.makeArray($('a[href$=".xlsx"], a[href$=".docx"], a[href$=".pdf"]'));
 	$.each(items, function (i, item) {
