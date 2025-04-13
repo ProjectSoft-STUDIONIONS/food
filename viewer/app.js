@@ -1,5 +1,5 @@
 /**
-* food v1.0.1
+* food v1.1.0
 * 
 * Директория food
 * 
@@ -7,7 +7,7 @@
 * 
 * License MIT
 * Author: ProjectSoft <projectsoft2009@yandex.ru> https://projectsoft.ru/
-* Compiled at: 01-04-2025 04:04:34 
+* Compiled at: 13-04-2025 12:04:13 
 *
 **/
 /*!
@@ -206,7 +206,7 @@
 			reg = new RegExp("^" + escapeRegExp(base));
 		if(reg.test(href) && $.trim(item.textContent)){
 			item.setAttribute('data-fancybox', ext);
-			item.setAttribute('data-caption', "Меню питания на " + $.trim(item.textContent));
+			item.setAttribute('data-caption', $.trim(item.textContent));
 			item.setAttribute('data-src', base + 'viewer/' + ext + '_viewer/?file=' + href);
 		}
 		item.setAttribute('target', "_blank");

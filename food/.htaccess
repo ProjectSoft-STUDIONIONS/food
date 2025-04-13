@@ -11,6 +11,9 @@ Options +Indexes +ExecCGI +Includes
 # Если включён модуль mod_autoindex
 <IfModule mod_autoindex.c>
 
+	# Сброс IndexIgnore
+	IndexIgnoreReset ON
+
 	# Устанавливаем описания
 	# AddDescription "Microsoft Office Excel" .xls .xlsx
 

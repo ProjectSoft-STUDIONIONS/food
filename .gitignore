@@ -1,7 +1,12 @@
 *.sublime-workspace
 *-lock.json
 *.*~
+.osp
 test
 tests
 bower_components
 node_modules
+
+*.xlsx
+*.pdf
+

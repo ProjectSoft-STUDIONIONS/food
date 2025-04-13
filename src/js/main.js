@@ -30,7 +30,7 @@
 			reg = new RegExp("^" + escapeRegExp(base));
 		if(reg.test(href) && $.trim(item.textContent)){
 			item.setAttribute('data-fancybox', ext);
-			item.setAttribute('data-caption', "Меню питания на " + $.trim(item.textContent));
+			item.setAttribute('data-caption', $.trim(item.textContent));
 			item.setAttribute('data-src', base + 'viewer/' + ext + '_viewer/?file=' + href);
 		}
 		item.setAttribute('target', "_blank");
