@@ -14,7 +14,8 @@ on:
         default: 'Upload files to school hostings'
 jobs:
   # Комсомольский
-  deploy_136:
+  komsomolskiy:
+    name: Комсомольский
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -57,7 +58,8 @@ jobs:
           workingDir: ${{ secrets.FTP_DIR_136 }}
           ignoreSSL: 1
   # Подбельск
-  deploy_294:
+  podbelsk:
+    name: Подбельск
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -100,7 +102,8 @@ jobs:
           workingDir: ${{ secrets.FTP_DIR_294 }}
           ignoreSSL: 1
   # Парфёновка
-  deploy_469:
+  parfenovka:
+    name: Парфёновка
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -143,7 +146,8 @@ jobs:
           workingDir: ${{ secrets.FTP_DIR_469 }}
           ignoreSSL: 1
   # Бобровка
-  deploy_852:
+  bobrovka:
+    name: Бобровка
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -186,7 +190,8 @@ jobs:
           workingDir: ${{ secrets.FTP_DIR_852 }}
           ignoreSSL: 1
   # Бобровка СП ДС
-  deploy_8817:
+  bobrovka_spds:
+    name: Бобровка СП ДС
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -228,4 +233,91 @@ jobs:
           remoteFiles: ".status.json"
           workingDir: ${{ secrets.FTP_DIR_8817 }}
           ignoreSSL: 1
-
+  # Большая Малышевка
+  bmalysh:
+    name: Большая Малышевка
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [20]
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      - name: Deploy to Hosting Бобровка
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_SERVER_9022 }}
+          username: ${{ secrets.FTP_USERNAME_9022 }}
+          password: ${{ secrets.FTP_PASSWORD_9022 }}
+          server-dir: ${{ secrets.FTP_DIR_9022 }}
+          local-dir: ./
+          state-name: .status.json
+          exclude: |
+            **/.git/**
+            **/.github/**
+            **/src/**
+            **/.gitattributes
+            **/.gitignore
+            **/bower.json
+            **/food.sublime-project
+            **/Gruntfile.js
+            **/LICENSE
+            **/README.md
+            **/package.json
+            **/bower_components/**
+            **/node_modules/**
+            **/test/**
+            **/package-lock.json
+      - name: Remove Status file Бобровка СП ДС
+        uses: StephanThierry/ftp-delete-action@v2.1
+        with:
+          host: ${{ secrets.FTP_SERVER_8817 }}
+          user: ${{ secrets.FTP_USERNAME_8817 }}
+          password: ${{ secrets.FTP_PASSWORD_8817 }}
+          remoteFiles: ".status.json"
+          workingDir: ${{ secrets.FTP_DIR_8817 }}
+          ignoreSSL: 1
+  # Большая Малышевка СП
+  bmalysh_spds:
+    name: Большая Малышевка СП ДС
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [20]
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      - name: Deploy to Hosting Бобровка
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_SERVER_9023 }}
+          username: ${{ secrets.FTP_USERNAME_9023 }}
+          password: ${{ secrets.FTP_PASSWORD_9023 }}
+          server-dir: ${{ secrets.FTP_DIR_9023 }}
+          local-dir: ./
+          state-name: .status.json
+          exclude: |
+            **/.git/**
+            **/.github/**
+            **/src/**
+            **/.gitattributes
+            **/.gitignore
+            **/bower.json
+            **/food.sublime-project
+            **/Gruntfile.js
+            **/LICENSE
+            **/README.md
+            **/package.json
+            **/bower_components/**
+            **/node_modules/**
+            **/test/**
+            **/package-lock.json
+      - name: Remove Status file Бобровка СП ДС
+        uses: StephanThierry/ftp-delete-action@v2.1
+        with:
+          host: ${{ secrets.FTP_SERVER_8817 }}
+          user: ${{ secrets.FTP_USERNAME_8817 }}
+          password: ${{ secrets.FTP_PASSWORD_8817 }}
+          remoteFiles: ".status.json"
+          workingDir: ${{ secrets.FTP_DIR_8817 }}
+          ignoreSSL: 1
