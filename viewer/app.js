@@ -7,7 +7,7 @@
 * 
 * License MIT
 * Author: ProjectSoft <projectsoft2009@yandex.ru> https://projectsoft.ru/
-* Compiled at: 13-04-2025 12:04:03 
+* Compiled at: 13-04-2025 12:04:12 
 *
 **/
 /*!
@@ -173,7 +173,6 @@
 
 	return init(function () {});
 }));
-
 !(function($){
 	const escapeRegExp = function (string) {
 		return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); // $& means the whole matched string

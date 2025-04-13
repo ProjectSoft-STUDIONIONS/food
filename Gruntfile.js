@@ -261,6 +261,28 @@ module.exports = function(grunt) {
 						filter: 'isFile'
 					},
 				]
+			},
+			main: {
+				options: {
+					patterns: [
+						{
+							match: /\r?\n\s+\r?\n/g,
+							replacement: '\n'
+						}
+					]
+				},
+				files: [
+					{
+						expand: true,
+						flatten : true,
+						src: [
+							'viewer/app.js',
+							'viewer/app.min.js'
+						],
+						dest: 'viewer/',
+						filter: 'isFile'
+					},
+				]
 			}
 		},
 		cssmin: {
