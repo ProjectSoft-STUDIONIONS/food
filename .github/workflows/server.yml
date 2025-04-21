@@ -48,15 +48,15 @@ jobs:
             **/node_modules/**
             **/test/**
             **/package-lock.json
-      - name: Remove Status file Комсомольский
-        uses: StephanThierry/ftp-delete-action@v2.1
-        with:
-          host: ${{ secrets.FTP_SERVER_136 }}
-          user: ${{ secrets.FTP_USERNAME_136 }}
-          password: ${{ secrets.FTP_PASSWORD_136 }}
-          remoteFiles: ".status.json"
-          workingDir: ${{ secrets.FTP_DIR_136 }}
-          ignoreSSL: 1
+      #- name: Remove Status file Комсомольский
+      #  uses: StephanThierry/ftp-delete-action@v2.1
+      #  with:
+      #    host: ${{ secrets.FTP_SERVER_136 }}
+      #    user: ${{ secrets.FTP_USERNAME_136 }}
+      #    password: ${{ secrets.FTP_PASSWORD_136 }}
+      #    remoteFiles: ".status.json"
+      #    workingDir: ${{ secrets.FTP_DIR_136 }}
+      #    ignoreSSL: 1
   # Подбельск
   podbelsk:
     name: Подбельск
@@ -92,14 +92,6 @@ jobs:
             **/node_modules/**
             **/test/**
             **/package-lock.json
-      - name: Remove Status file Подбельск
-        uses: StephanThierry/ftp-delete-action@v2.1
-        with:
-          host: ${{ secrets.FTP_SERVER_294 }}
-          user: ${{ secrets.FTP_USERNAME_294 }}
-          password: ${{ secrets.FTP_PASSWORD_294 }}
-          remoteFiles: ".status.json"
-          workingDir: ${{ secrets.FTP_DIR_294 }}
           ignoreSSL: 1
   # Парфёновка
   parfenovka:
@@ -136,15 +128,6 @@ jobs:
             **/node_modules/**
             **/test/**
             **/package-lock.json
-      - name: Remove Status file Парфёновка
-        uses: StephanThierry/ftp-delete-action@v2.1
-        with:
-          host: ${{ secrets.FTP_SERVER_469 }}
-          user: ${{ secrets.FTP_USERNAME_469 }}
-          password: ${{ secrets.FTP_PASSWORD_469 }}
-          remoteFiles: ".status.json"
-          workingDir: ${{ secrets.FTP_DIR_469 }}
-          ignoreSSL: 1
   # Бобровка
   #bobrovka:
   #  name: Бобровка
@@ -268,14 +251,6 @@ jobs:
             **/node_modules/**
             **/test/**
             **/package-lock.json
-      - name: Remove Status file Бобровка СП ДС
-        uses: StephanThierry/ftp-delete-action@v2.1
-        with:
-          host: ${{ secrets.FTP_SERVER_8817 }}
-          user: ${{ secrets.FTP_USERNAME_8817 }}
-          password: ${{ secrets.FTP_PASSWORD_8817 }}
-          remoteFiles: ".status.json"
-          workingDir: ${{ secrets.FTP_DIR_8817 }}
           ignoreSSL: 1
   # Большая Малышевка СП
   bmalysh_spds:
@@ -312,12 +287,3 @@ jobs:
             **/node_modules/**
             **/test/**
             **/package-lock.json
-      - name: Remove Status file Бобровка СП ДС
-        uses: StephanThierry/ftp-delete-action@v2.1
-        with:
-          host: ${{ secrets.FTP_SERVER_8817 }}
-          user: ${{ secrets.FTP_USERNAME_8817 }}
-          password: ${{ secrets.FTP_PASSWORD_8817 }}
-          remoteFiles: ".status.json"
-          workingDir: ${{ secrets.FTP_DIR_8817 }}
-          ignoreSSL: 1
