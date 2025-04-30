@@ -352,8 +352,8 @@ table tr th:first-child {
 
 table tr td:last-child,
 table tr th:last-child,
-table tr td :nth-child(3),
-table tr th :nth-child(3) {
+table tr td:nth-child(3),
+table tr th:nth-child(3) {
   width: 1%;
   white-space: nowrap;
 }
