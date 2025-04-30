@@ -288,20 +288,6 @@ a:hover img {
   transform: scale(1.1);
 }
 
-tr:hover a img {
-  -ms-transform: scale(1.1);
-  transform: scale(1.1);
-}
-
-td.indexcolname a {
-  display: block;
-}
-
-td.indexcolicon a:hover {
-  text-decoration: none;
-  border-bottom: 1px dashed transparent;
-}
-
 table {
   width: 100%;
   margin: 0;
@@ -311,7 +297,7 @@ table {
   padding: 0;
 }
 
-tr {
+table tr {
   width: 100%;
   padding: 0;
   margin: 0;
@@ -319,33 +305,57 @@ tr {
   box-shadow: 0px 0px 1px black;
 }
 
-tr:hover {
+table tr:hover {
   box-shadow: 0px 0px 3px #0098ff;
 }
 
-th,
-td {
+table tr:hover a img {
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+table tr td,
+table tr th {
   padding: 5px 10px;
   margin: 0;
   box-shadow: 0px 0px 1px black;
   text-align: left;
 }
 
-th[align="right"],
-td[align="right"],
-th:nth-child(3),
-td:nth-child(3) {
+table tr td.indexcolname,
+table tr th.indexcolname {
+  max-width: 228px !important;
+}
+
+table tr td.indexcolname a,
+table tr th.indexcolname a {
+  display: block;
+}
+
+table tr td.indexcolname a:hover,
+table tr th.indexcolname a:hover {
+  text-decoration: none;
+  border-bottom: 1px dashed transparent;
+}
+
+table tr td[align="right"],
+table tr th[align="right"],
+table tr td:nth-child(3),
+table tr th:nth-child(3) {
   text-align: right;
 }
 
-th:first-child,
-td:first-child {
+table tr td:first-child,
+table tr th:first-child {
   width: 30px;
 }
 
-th.indexcolname,
-td.indexcolname {
-  max-width: 228px !important;
+table tr td:last-child,
+table tr th:last-child,
+table tr td :nth-child(3),
+table tr th :nth-child(3) {
+  width: 1%;
+  white-space: nowrap;
 }
 
 hr {
