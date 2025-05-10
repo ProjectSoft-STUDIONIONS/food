@@ -5,21 +5,11 @@ module.exports = function(grunt) {
 		uniqid = function () {
 			var md5 = require('md5');
 			result = md5((new Date()).getTime()).toString();
-			grunt.verbose.writeln("Generate hash: " + chalk.cyan(result));
-			grunt.verbose.writeln([" "]);
+			grunt.log.writeln("Generate hash: " + chalk.cyan(result));
+			grunt.log.writeln([" "]);
 			return result;
 		};
 	
-	String.prototype.hashCode = function() {
-		var hash = 0, i, chr;
-		if (this.length === 0) return hash;
-		for (i = 0; i < this.length; i++) {
-			chr   = this.charCodeAt(i);
-			hash  = ((hash << 5) - hash) + chr;
-			hash |= 0; // Convert to 32bit integer
-		}
-		return hash;
-	};
 	const NpmImportPlugin = require("less-plugin-npm-import");
 	require('load-grunt-tasks')(grunt);
 	require('time-grunt')(grunt);
@@ -91,7 +81,7 @@ module.exports = function(grunt) {
 * 
 * License <%= pkg.license %>
 * Author: <%= pkg.author.name %> <<%= pkg.author.email %>> <%= pkg.author.url %>
-* Compiled at: <%= grunt.template.today("dd-mm-yyyy hh:mm:ss ") %>
+* Compiled at: <%= grunt.template.today("dd-mm-yyyy") %>
 *
 **/
 `,
@@ -162,7 +152,7 @@ module.exports = function(grunt) {
 * 
 * License <%= pkg.license %>
 * Author: <%= pkg.author.name %> <<%= pkg.author.email %>> <%= pkg.author.url %>
-* Compiled at: <%= grunt.template.today("dd-mm-yyyy hh:mm:ss ") %>
+* Compiled at: <%= grunt.template.today("dd-mm-yyyy") %>
 *
 **/`,
 		  			output: {
