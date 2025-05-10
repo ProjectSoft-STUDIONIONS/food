@@ -7,7 +7,7 @@
 * 
 * License MIT
 * Author: ProjectSoft <projectsoft2009@yandex.ru> https://projectsoft.ru/
-* Compiled at: 10-05-2025 02:05:59 
+* Compiled at: 10-05-2025
 *
 **/
 /*!

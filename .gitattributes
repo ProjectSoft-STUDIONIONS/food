@@ -1,5 +1,15 @@
 * text=auto
 
+**/*.shtml text eol=lf
+**/*.css text eol=lf
+**/*.js text eol=lf
+**/*.pug text eol=lf
+**/*.less text eol=lf
+**/*.php text eol=lf
+**/*.sublime-project text eol=lf
+bower.json text eol=crlf
+package.json text eol=crlf
+
 /.github export-ignore
 /src export-ignore
 /.gitattributes export-ignore
