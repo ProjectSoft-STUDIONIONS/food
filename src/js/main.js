@@ -31,7 +31,9 @@
 			ext = arr.at(-1).toLowerCase(),
 			reg = new RegExp("^" + escapeRegExp(base));
 		if(reg.test(href) && $.trim(item.textContent)){
-			item.setAttribute('data-fancybox', ext);
+			// Для перехода по ссылке на определённый файл
+			// Ссылка типа https://site.ru/#file.xlsx
+			item.setAttribute('data-fancybox', $.trim(item.textContent));
 			item.setAttribute('data-caption', $.trim(item.textContent));
 			item.setAttribute('data-src', base + 'viewer/' + ext + '_viewer/?file=' + href);
 		}

@@ -1,10 +1,12 @@
 module.exports = function(grunt) {
 	var fs = require('fs'),
+		path = require('path'),
 		chalk = require('chalk'),
 		uniqid = function () {
 			var md5 = require('md5');
 			result = md5((new Date()).getTime()).toString();
-			grunt.verbose.writeln("Generate hash: " + chalk.cyan(result) + " >>> OK");
+			grunt.verbose.writeln("Generate hash: " + chalk.cyan(result));
+			grunt.verbose.writeln([" "]);
 			return result;
 		};
 	
@@ -22,13 +24,24 @@ module.exports = function(grunt) {
 	require('load-grunt-tasks')(grunt);
 	require('time-grunt')(grunt);
 
+	let pkg_json = grunt.file.readJSON('package.json');
+
 	var gc = {
 			assets: "dist/viewer/pdf_viewer",
-			pkg: grunt.file.readJSON('package.json')
-		},
-		url = gc.pkg.repository.url;
-	url = url.replace(".git", "").replace("git+", "");
-	gc.url = url;
+			pkg: pkg_json,
+			url: pkg_json.repository.url.replace(".git", "").replace("git+", "")
+		};
+
+	grunt.log.writeln([" "]);
+
+	// Delete food.zip
+	let food_zip = path.normalize(path.join(__dirname, "food.zip")).replace(/\\/g, "/");
+	if(fs.existsSync(food_zip)) {
+		fs.unlinkSync(food_zip);
+		grunt.log.writeln(["Delete file: " + chalk.cyan(food_zip)]);
+		grunt.log.writeln([" "]);
+	}
+
 	grunt.initConfig({
 		globalConfig : gc,
 		pkg : gc.pkg,

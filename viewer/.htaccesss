@@ -1,0 +1,6 @@
+Options +FollowSymlinks
+Options -Indexes
+
+<IfModule mod_autoindex.c>
+	IndexIgnore *
+</IfModule>

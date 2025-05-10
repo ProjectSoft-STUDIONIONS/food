@@ -7,7 +7,7 @@
 * 
 * License MIT
 * Author: ProjectSoft <projectsoft2009@yandex.ru> https://projectsoft.ru/
-* Compiled at: 10-05-2025 01:05:13 
+* Compiled at: 10-05-2025 02:05:59 
 *
 **/
 /*!
@@ -206,7 +206,9 @@
 			ext = arr.at(-1).toLowerCase(),
 			reg = new RegExp("^" + escapeRegExp(base));
 		if(reg.test(href) && $.trim(item.textContent)){
-			item.setAttribute('data-fancybox', ext);
+			// Для перехода по ссылке на определённый файл
+			// Ссылка типа https://site.ru/#file.xlsx
+			item.setAttribute('data-fancybox', $.trim(item.textContent));
 			item.setAttribute('data-caption', $.trim(item.textContent));
 			item.setAttribute('data-src', base + 'viewer/' + ext + '_viewer/?file=' + href);
 		}
