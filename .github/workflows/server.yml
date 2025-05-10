@@ -13,9 +13,8 @@ on:
         required: true
         default: 'Upload files to school hostings'
 jobs:
-  # Комсомольский
-  komsomolskiy:
-    name: Комсомольский
+  none:
+    name: Ничего не происходит
     runs-on: ubuntu-latest
     strategy:
       matrix:
