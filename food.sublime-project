@@ -14,12 +14,13 @@
 		{
 			"name": "Build Project",
 			"working_dir": "${project_path}",
-			"shell_cmd": "npm run build"
-		},
-		{
-			"name": "Project Install",
-			"working_dir": "${project_path}",
-			"shell_cmd": "npm i --legacy-peer-deps && bower install"
+			"cmd": [
+				"start",
+				"/wait",
+				"grunt",
+				"-v"
+			],
+			"shell": true
 		}
 	]
 }

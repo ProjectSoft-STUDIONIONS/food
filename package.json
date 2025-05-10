@@ -19,13 +19,14 @@
 	"homepage": "https://github.com/ProjectSoft-STUDIONIONS/food#readme",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"inst": "npm i --legacy-peer-deps && bower install",
+		"inst": "npm i && bower install",
 		"build": "grunt -v"
 	},
 	"devDependencies": {
 		"grunt": "^1.6.1",
 		"grunt-autoprefixer": "^3.0.4",
 		"grunt-contrib-clean": "^2.0.1",
+		"grunt-contrib-compress": "^2.0.0",
 		"grunt-contrib-concat": "^2.1.0",
 		"grunt-contrib-cssmin": "^5.0.0",
 		"grunt-contrib-less": "^3.0.0",

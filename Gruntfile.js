@@ -301,6 +301,33 @@ module.exports = function(grunt) {
 				}
 			}
 		},
+		compress: {
+			main: {
+				options: {
+					archive: 'food.zip'
+				},
+				files: [
+					{
+						expand: true,
+						cwd: './',
+						src: [
+							'viewer/**',
+							// .htaccess
+							'viewer/.*',
+							'viewer/**/.*',
+							'food/.*',
+							// Только нужные файлы
+							'icons-full/.*',
+							'icons-full/*.css',
+							'icons-full/*.php',
+							'icons-full/*.png',
+							'icons-full/*.shtml'
+						],
+						dest: '/food/'
+					},
+				],
+			},
+		}
 	});
 	grunt.registerTask('default', [
 		'concat',
@@ -309,6 +336,7 @@ module.exports = function(grunt) {
 		'autoprefixer',
 		'group_css_media_queries',
 		'replace',
-		'cssmin'
+		'cssmin',
+		'compress'
 	]);
 }
