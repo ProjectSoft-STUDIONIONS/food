@@ -211,7 +211,7 @@
 		if(reg.test(href) && $.trim(item.textContent)){
 			// Для перехода по ссылке на определённый файл
 			// Ссылка типа https://site.ru/#file.xlsx
-			console.log(href);
+			//console.log(href);
 			item.textContent = url.pathname.split("/").pop();
 			item.setAttribute('data-fancybox', $.trim(item.textContent));
 			item.setAttribute('data-caption', $.trim(item.textContent));

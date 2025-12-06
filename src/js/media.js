@@ -192,7 +192,6 @@
 			type = providerOpts.type;
 			provider = providerName;
 			paramObj = {};
-			console.log(providerName);
 			if (providerOpts.paramPlace && rez[providerOpts.paramPlace]) {
 				urlParams = rez[providerOpts.paramPlace];
 
@@ -362,7 +361,7 @@
 						break;
 					case 'rutube':
 						// Здесь проверить
-						console.log("RuTube");
+						//console.log("RuTube");
 						break;
 				}
 			}
@@ -395,7 +394,7 @@
 					case 'docxview':
 					case 'xlsxview':
 					case 'pdf':
-						console.info(current.contentSource);
+						//console.info(current.contentSource);
 						break;
 				}
 			}/* &&
