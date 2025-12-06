@@ -37,9 +37,10 @@
 			// Для перехода по ссылке на определённый файл
 			// Ссылка типа https://site.ru/#file.xlsx
 			console.log(href);
+			item.textContent = url.pathname.split("/").pop();
 			item.setAttribute('data-fancybox', $.trim(item.textContent));
 			item.setAttribute('data-caption', $.trim(item.textContent));
-			item.setAttribute('data-src', window.location.origin + `/viewer/xlsx_viewer/?file=${url.pathname}`);
+			item.setAttribute('data-src', window.location.origin + `/viewer/${ext}_viewer/?file=${url.pathname}`);
 			item.setAttribute('data-type', 'iframe');
 		}
 		item.setAttribute('target', "_blank");

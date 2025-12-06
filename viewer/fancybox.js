@@ -3523,34 +3523,26 @@
 				type: 'image',
 				url: 'https://$1/p/$2/media/?size=l',
 			},
-			/*
 			// PDF Viewer
 			pdfview: {
-				matcher: new RegExp("(^.+" + regHost + "\/.+\.pdf)$", "i"),
+				matcher: new RegExp("^" + regHost + "(\/.+\.pdf)$", "i"),
+				params: {
+					frameBorder: 0,
+				},
+				paramPlace: 1,
 				type: 'iframe',
 				url: window.location.origin + "/viewer/pdf_viewer/?file=$1"
 			},
-			// DOCX Viewer
-			docxview: {
-				matcher: new RegExp("(^.+" + regHost + "\/.+\.docx)$", "i"),
-				type: 'iframe',
-				url: window.location.origin + "/viewer/docx_viewer/?file=$1"
-			},*/
 			// XLSX Viewer
 			xlsxview: {
-				matcher: new RegExp("^" + regHost + "\/(.+\.xlsx)$", "i"),//new RegExp("(^.+" + regHost + "\/.+\.xlsx)$", "i"),
+				matcher: new RegExp("^" + regHost + "\/(.+\.xlsx)$", "i"),
+				params: {
+					frameBorder: 0,
+				},
+				paramPlace: 1,
 				type: 'iframe',
 				url: window.location.origin + "/viewer/xlsx_viewer/?file=$1"
 			},
-			
-			/*
-			Пока уберём
-			pdf: {
-				matcher: /(.+\.(?:pdf))((\?|#).*)?$/i,
-				type: 'iframe',
-				url: "$1$2"
-			},
-			*/
 			// Examples:
 			// http://maps.google.com/?ll=48.857995,2.294297&spn=0.007666,0.021136&t=m&z=16
 			// https://www.google.com/maps/@37.7852006,-122.4146355,14.65z
