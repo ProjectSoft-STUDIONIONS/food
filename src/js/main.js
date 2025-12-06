@@ -31,13 +31,16 @@
 			base = window.location.origin + '/',
 			arr = href.split('.'),
 			ext = arr.at(-1).toLowerCase(),
-			reg = new RegExp("^" + escapeRegExp(base));
+			reg = new RegExp("^" + escapeRegExp(base)),
+			url = new URL(href);
 		if(reg.test(href) && $.trim(item.textContent)){
 			// Для перехода по ссылке на определённый файл
 			// Ссылка типа https://site.ru/#file.xlsx
+			console.log(href);
 			item.setAttribute('data-fancybox', $.trim(item.textContent));
 			item.setAttribute('data-caption', $.trim(item.textContent));
-			item.setAttribute('data-src', base + 'viewer/' + ext + '_viewer/?file=' + href);
+			item.setAttribute('data-src', window.location.origin + `/viewer/xlsx_viewer/?file=${url.pathname}`);
+			item.setAttribute('data-type', 'iframe');
 		}
 		item.setAttribute('target', "_blank");
 	});

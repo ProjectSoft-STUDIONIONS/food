@@ -17,7 +17,8 @@
 			"cmd": [
 				"start",
 				"/wait",
-				"grunt"
+				"grunt",
+				"-v"
 			],
 			"shell": true
 		}

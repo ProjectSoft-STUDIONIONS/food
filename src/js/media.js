@@ -97,9 +97,10 @@
 				type: 'image',
 				url: 'https://$1/p/$2/media/?size=l',
 			},
+			/*
 			// PDF Viewer
 			pdfview: {
-				matcher: new RegExp("(^.+" + regHost + "\/.+\.pdf)$", "im"),
+				matcher: new RegExp("(^.+" + regHost + "\/.+\.pdf)$", "i"),
 				type: 'iframe',
 				url: window.location.origin + "/viewer/pdf_viewer/?file=$1"
 			},
@@ -108,13 +109,14 @@
 				matcher: new RegExp("(^.+" + regHost + "\/.+\.docx)$", "i"),
 				type: 'iframe',
 				url: window.location.origin + "/viewer/docx_viewer/?file=$1"
-			},
+			},*/
 			// XLSX Viewer
 			xlsxview: {
-				matcher: new RegExp("(^.+" + regHost + "\/.+\.xlsx)$", "i"),
+				matcher: new RegExp("^" + regHost + "\/(.+\.xlsx)$", "i"),//new RegExp("(^.+" + regHost + "\/.+\.xlsx)$", "i"),
 				type: 'iframe',
 				url: window.location.origin + "/viewer/xlsx_viewer/?file=$1"
 			},
+			
 			/*
 			Пока уберём
 			pdf: {
