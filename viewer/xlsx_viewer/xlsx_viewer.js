@@ -534,7 +534,13 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
 		title.innerHTML = document.getElementsByTagName('title')[0].innerHTML = file.split('/').at(-1);
 		fetch(file).then(function(res){
 			res.arrayBuffer().then(function(ab){
-				const wb = XLSX.read(ab);
+				/**
+				 * Установим формат даты
+				 */
+				const wb = XLSX.read(ab, {
+					cellDates: true,
+					dateNF: 'dd-mm-yyyy',
+				});
 				spreadsheetFn(wb);
 				download.setAttribute("href", file);
 			}).catch(function(e){

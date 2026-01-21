@@ -1,5 +1,5 @@
 /**
-* food v1.1.0
+* food v1.1.4
 * 
 * Директория food
 * 
@@ -7,7 +7,7 @@
 * 
 * License MIT
 * Author: ProjectSoft <projectsoft2009@yandex.ru> https://projectsoft.ru/
-* Compiled at: 06-12-2025
+* Compiled at: 21-01-2026
 *
 **/
 /*!
